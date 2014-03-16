@@ -32,12 +32,12 @@ with Orchestrator(aws_region='us-west-2') as orchestrator:
     # Cloudera manager node. Needs to be in public subnet.
     orchestrator.add_instance(name='cloudera-manager', ec2_size='m3.2xlarge',
         subnet=public_subnet, bootstrap_sequence=manager_sequence, **generic_options).auto_assign_ip()
-    # Platfora master node. Needs to be in public subnet.
+    # P master node. Needs to be in public subnet.
     orchestrator.add_instance(name='p-master', ec2_size='m3.2xlarge',
         subnet=public_subnet, bootstrap_sequence=p_master_sequence, **generic_options).auto_assign_ip()
     # Hadoop nodes. Private subnet with NAT.
     orchestrator.add_pool(pool_name='hadoop', pool_size=2, instance_size='m3.2xlarge',
         subnet=private_subnet, bootstrap_sequence=cloudera_node_sequence, **generic_options)
-    # Platfora worker nodes. Same as hadoop nodes.
+    # P worker nodes. Same as hadoop nodes.
     orchestrator.add_pool(pool_name='p-worker', pool_size=2, instance_size='m3.2xlarge',
         subnet=private_subnet, bootstrap_sequence=p_worker_sequence, **generic_options)
