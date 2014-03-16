@@ -10,7 +10,6 @@ Each step is meant to be idempotent to aid error recovery but for the time being
 process is halted then the processes is started anew and the old instances and block devices are
 left intact. The only thing that carries over are the instance and block device names so that
 they can be easily identified in the AWS console. 
-follows.
 
 # Example Cluster Configuration
 Look in `examples`. Pretty straightforward.
