@@ -65,7 +65,7 @@ def with_retry(retry_message, error_message, retry=10, sleep_time=10):
                         logger.fatal(error_message + " Instance = {0}.".format(self.name))
                         break
                     logger.debug(retry_message + " Instance = {0}.".format(self.name))
-                    sleep_time(sleep_time)
+                    sleep(sleep_time)
 
         return decorated
 
